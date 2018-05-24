@@ -15,9 +15,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    # Redirect to specific page after successful sign up
     def after_sign_up_path_for(resource)
       countdowns_path
+    end
+
+    def after_update_path_for(resource)
+      user_path(resource)
     end
 
     def configure_permitted_parameters

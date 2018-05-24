@@ -27,8 +27,8 @@
 		}
 		.navbar-nav > li > a:hover,
 		.navbar-nav > li a:focus {
-			color: #fff;
-			opacity: 1;
+			color: #fff !important;
+			opacity: 1 !important;
 		}
 		.navbar-nav > .active > a,
 		.navbar-nav > .active > a:hover,

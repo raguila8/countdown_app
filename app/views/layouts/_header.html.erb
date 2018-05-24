@@ -15,6 +15,14 @@
 				</li>
       
 			<% if signed_in? %>
+
+        <li>
+          <%= link_to new_countdown_path do %>
+            <span class="glyphicon glyphicon-plus-sign g-mr-5"></span>
+            <span>New Countdown</span>
+          <% end %>
+        </li>
+
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-user g-mr-5"></span>
@@ -23,15 +31,24 @@
 					</a>
         	<ul class="dropdown-menu">
           	<li class="g-mh-20">
-							<%= link_to "My Countdowns", current_user %>
+							<%= link_to current_user do %>
+                <span class="glyphicon glyphicon-hourglass g-mr-5"></span>
+                <span>My Countdowns</span>
+              <% end %>
 						</li>	
 
           	<li class="g-mh-20">
-							<%= link_to "Account", edit_user_registration_path %>
+							<%= link_to edit_user_registration_path do %>
+                <span class="glyphicon glyphicon-cog g-mr-5"></span>
+                <span>Account</span>
+              <% end %>
 						</li>
 
           	<li class="g-mh-20">
-							<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+							<%= link_to destroy_user_session_path, method: :delete do %>
+                <span class="glyphicon glyphicon-log-out g-mr-5"></span>
+                <span>Log Out</span>
+              <% end %>
 						</li>
        		</ul>
 				</li>
