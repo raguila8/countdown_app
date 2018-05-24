@@ -1,0 +1,21 @@
+<% if !landing_page? && !about_page? %>
+	<hr class="default-border">
+<% end %>
+<footer class="footer-container" role="contentinfo">
+	<div class="f-1-ch-1 f-1-ch-2 text-center" style="max-width: 935px;">
+		<nav role="navigation col-md-">
+			<ul>
+				<li class="footer-item">
+					<%= link_to "About", about_path %>
+				</li>
+				<li class="footer-item">
+					<%= link_to "Attributions", attributions_path %>
+				</li>
+				<li class="footer-item">
+					<%= link_to "Github", "https://github.com/raguila8/countdown_app" %>
+				</li>
+			</ul>
+		</nav>
+		<span class="copyright text-center">© 2018 Rodrigo Aguilar</span>
+	</div>
+</footer>

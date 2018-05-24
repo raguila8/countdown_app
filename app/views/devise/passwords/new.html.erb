@@ -1,0 +1,33 @@
+<% provide(:title, "Password Recovery") %>
+<div class = "custom-form">
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100 primary-bs">
+			<div class="login100-form-title" style="background-image: url(/signup_bg.jpg);">
+				<span class="login100-form-title-1">
+					Password Recovery
+				</span>
+			</div>
+
+			<%= form_for(resource, :html => { method: :post, :class => 'login100-form validates-form', novalidate: :true }, as: resource_name, url: password_path(resource_name)) do |f| %>
+
+				<%= render 'shared/error_messages' %>				
+  
+				<div class="field wrap-input100 m-b-26">
+					<span class="label-input100">Email</span>
+    			<%= f.email_field :email, class: "input100", placeholder: "Enter email"%>
+					<span class="focus-input100"></span>
+  			</div>
+
+
+  			<div class="actions container-login100-form-btn">
+    			<%= f.submit "Submit", class: "btn g-mb-10 font-size-16 font-weight-400 g-btn-secondary" %>
+  			</div>
+				<div id="signup-login-div">
+					<span id="signup-login-span">New user? <%= link_to "Sign up now!", new_user_registration_path, id: "signup-login-link" %></span>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>	
+</div>

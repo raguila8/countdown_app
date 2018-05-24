@@ -1,0 +1,40 @@
+<% provide(:title, "Reset Password") %>
+<div class = "custom-form">
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100 primary-bs">
+			<div class="login100-form-title" style="background-image: url(/signup-bg.jpg);">
+				<span class="login100-form-title-1">
+					Reset Password
+				</span>
+			</div>
+
+			<%= form_for(resource, :html => { method: :put, :class => 'login100-form validates-form', novalidate: :true }, as: resource_name, url: password_path(resource_name)) do |f| %>
+
+				<%= render 'shared/error_messages' %>
+				<%= f.hidden_field :reset_password_token %>
+  
+				<div class="field wrap-input100 validate-input m-b-18">
+					<span class="label-input100" style="font-size: 12px; width:90px;">New Password</span>
+    			<%= f.password_field :password, autocomplete: "off", class: "input100", placeholder: "Enter new password" %>
+					<span class="focus-input100"></span>
+  			</div>
+
+  			<div class="field wrap-input100 validate-input m-b-18">
+					<span class="label-input100" style="font-size: 12px; width:90px;">Confirm New Password</span>
+    			<%= f.password_field :password_confirmation, autocomplete: "off", class: "input100", placeholder: "Confirm new password" %>
+					<span class="focus-input100"></span>
+  			</div>
+
+
+  			<div class="actions container-login100-form-btn">
+    			<%= f.submit "Change my Password", class: "btn g-mb-10 font-size-16 font-weight-400 g-btn-primary" %>
+  			</div>
+				<div id="signup-login-div">
+					<span id="signup-login-span">New user? <%= link_to "Sign up now!", new_user_registration_path, id: "signup-login-link" %></span>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>	
+</div>
