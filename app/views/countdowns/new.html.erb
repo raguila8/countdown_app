@@ -1,0 +1,127 @@
+<%= render '/countdowns/preview.html.erb' %>
+<% provide(:title, "New Countdown") %>
+
+<%= form_for(@countdown, :html => { class: "g-primary-card", id: "regForm", novalidate: :true, method: :create }, url: countdowns_path) do |f| %>
+
+  <h1>New Countdown</h1>
+
+  <%= render 'shared/error_messages' %>
+
+  <div class="tab">
+    <div class="form-group">
+      <%= f.label :name %>
+  	  <%= f.text_field :name, class: "form-control", placeholder: "Enter countdown name" %>
+  	</div>
+  
+    <div class="form-group">
+  	  <%= f.label :date %>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="tab g-mb-40 text-center"> 
+    <div class="form-group">
+  	  <%= f.label :title_color, "Title Color:" %>
+      <div>
+  		  <%= f.text_field :title_color, value: "#ffffff", class: "form-control", style: "display: inline; width: 66%;" %>
+      </div>
+  	</div>
+    
+  
+    <div class="form-group">
+  		<%= f.label :labels_color, "Labels' Color:" %>
+      <div>
+        <%= f.text_field :labels_color, value: "#ffffff", class: "form-control", style: "display: inline; width: 66%;" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+  	  <%= f.label :time_color, "Time Color:" %>
+      <div>
+  		  <%= f.text_field :time_color, value: "#ffffff", class: "form-control", style: "display: inline; width: 66%;" %>
+      </div>
+    </div>
+  
+    <div class="form-group">
+  	  <%= f.label :clock_background_color, "Clock Background Color:" %>
+      <div>
+        <%= f.text_field :clock_background_color, value: "#ffffff", class: "form-control", style: "display: inline; width: 66%;" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <div class="form-group">
+      <%= f.hidden_field :main_image, value: "/main_images/main_image1.jpg" %>
+      <%= f.hidden_field :background_image, value: "/background_images/background_image1.jpg" %>
+
+      <p class="g-label">Countdown Image:</p>
+      <p class="secondary-text g-ml-10">Choose one of our images or upload your own</p>
+      <div>
+      <div class="row main-image-scroll"> 
+        <% 7.times do |n| %>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+            <div class="text-center row">
+              <img src="/main_images/main_image<%=n + 1%>.jpg" alt="Default Countdown Image" style="max-width: 120px; max-height: 120px;" class="g-mb-5 default-image imgFrame">
+            </div>
+          </div>
+        <% end %>
+      </div>
+      </div>
+      <div class="text-center">
+        <label for="countdown_main_image_dummy" class="btn font-size-16 font-weight-600 g-mb-10 g-btn-secondary image-upload-label g-mt-30 text-center"><span class="glyphicon glyphicon-cloud-upload g-mr-3"></span> Upload Image</label>
+  		  <%= f.file_field :main_image_dummy, value: "/main_images/main_image1.jpg", class: "form-control image-upload" %>
+
+        <div id="main-image-preview">
+          <img class="imgFrame g-mt-20" src="/main_images/main_image1.jpg" alt="Selected Countdown Image" style="max-width: 150px; max-height: 150px;" >
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p class="g-label">Countdown Image:</p>
+      <p class="secondary-text g-ml-10">Choose one of our images or upload your own</p>
+      <div>
+        <div class="row background-image-scroll"> 
+          <% 9.times do |n| %>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+              <div class="text-center row">
+                <img src="/background_images/background_image<%=n + 1%>.jpg" alt="Default Background Image" style="width: 120px; height: 120px;" class="g-mb-5 default-image imgFrame">
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <label for="countdown_background_image_dummy" class="btn font-size-16 font-weight-600 g-mb-10 g-btn-secondary image-upload-label g-mt-30 text-center"><span class="glyphicon glyphicon-cloud-upload g-mr-3"></span> Upload Image</label>
+  		  <%= f.file_field :background_image_dummy, value: "/background_images/background_image1.jpg", class: "form-control image-upload" %>
+
+        <div id="background-image-preview">
+          <img class="imgFrame g-mt-20" src="/background_images/background_image1.jpg" alt="Selected Background Image" style="max-width: 150px; max-height: 150px;" >
+        </div>
+      </div>
+
+      <%#= f.label :background_image, "Background Image:" %>
+  		<%#= f.file_field :background_image, class: "form-control image-upload" %>
+  	</div>
+  </div>
+           
+  <div class="text-center g-mt-40"> 
+    <button type="button" id="prevBtn" class= "next-prev-btn btn font-size-16 g-mr-20 font-weight-400 g-mb-10"><span class="glyphicon glyphicon-chevron-left"></span> Previous</button> 
+            
+    <button type="button" id="nextBtn" class="next-prev-btn btn font-size-16 font-weight-400 g-mb-10 g-btn-primary">Next <span class="glyphicon glyphicon-chevron-right"></span></button><br>
+    <button type="button" id="previewBtn" class= "g-btn-secondary btn btn-block font-size-16 g-mb-10">Preview</button> 
+
+  </div>
+ 
+  <!--<button type="button" id="previewBtn" class= "text-center g-btn-secondary btn btn-block font-size-16 g-mr-20 font-weight-400 g-mb-10">Preview</button>-->
+
+
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px; margin-right: 0; margin-left: 0;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+<% end %>

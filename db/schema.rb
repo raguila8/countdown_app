@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524184201) do
+ActiveRecord::Schema.define(version: 20180528024515) do
 
   create_table "countdowns", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20180524184201) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title_color"
+    t.string "labels_color"
+    t.string "clock_background_color"
+    t.string "time_color"
   end
 
   create_table "users", force: :cascade do |t|

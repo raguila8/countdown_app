@@ -1,0 +1,8 @@
+<% if @valid %>
+  $("#preview-modal .modal-body").append("<%= escape_javascript render(:partial => '/countdowns/countdown', locals: { countdown: @countdown }) %>");
+  $("#preview-modal").modal('show'); 
+<% else %>
+  $('#error_explanation').remove();
+  var html = "<div id='error_explanation'><ul><li>" + data.error + "</li></ul></div>";
+  $('#regForm h1').after(html);
+<% end %>

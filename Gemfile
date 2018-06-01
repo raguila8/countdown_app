@@ -32,6 +32,10 @@ gem 'rubocop-rails'
 gem 'devise'
 
 gem 'jquery-turbolinks'
+
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -61,6 +65,11 @@ end
 
 group :test do
   gem 'capybara-screenshot'
+end
+
+group :production do
+  gem 'pg', '0.18.4'
+  gem 'fog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

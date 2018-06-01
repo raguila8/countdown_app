@@ -1,6 +1,9 @@
 <% if @user %>
 	<% model = @user %>
+<% elsif @countdown%>
+  <% model = @countdown %>
 <% end %>
+
 <% if model.errors.any? %>
   <div id="error_explanation">
    <ul>

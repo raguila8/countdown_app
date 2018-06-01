@@ -1,0 +1,4 @@
+<% if !@valid %>
+  $('#error_explanation').remove();
+  $('#regForm').prepend("<%= escape_javascript render(:partial => '/shared/error_messages') %>");
+<% end %>

@@ -12,9 +12,14 @@
  *
  *= require forms/normalize.css
  *= require bootstrap.min.css
+ *= require flipclock.css
  *= require forms/main.scss
  *= require forms/util.scss
+ *= require flickity
+ *= require spectrum
  *= require navbar.scss
  *= require shared.scss
+ *= require user_profile.scss
+ *= require countdown.scss
  *= require_self
  */

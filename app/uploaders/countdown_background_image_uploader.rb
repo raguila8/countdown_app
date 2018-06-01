@@ -1,0 +1,4 @@
+class CountdownBackgroundImageUploader < ImageUploader 
+
+end
+

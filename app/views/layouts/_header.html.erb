@@ -46,19 +46,19 @@
 
           	<li class="g-mh-20">
 							<%= link_to destroy_user_session_path, method: :delete do %>
-                <span class="glyphicon glyphicon-log-out g-mr-5"></span>
-                <span>Log Out</span>
+                <span class="c-danger glyphicon glyphicon-log-out g-mr-5"></span>
+                <span class="c-danger">Log Out</span>
               <% end %>
 						</li>
        		</ul>
 				</li>
 			<% else %>
         <li>
-					<%= link_to "Log In", new_user_session_path, class: "secondary-btn g-btn-small g-ml-16 font-weight-600" %>
+					<%= link_to "Log In", new_user_session_path, id: 'secondary-btn', class: "g-btn-small g-ml-16 font-weight-600" %>
 				</li>
 
 				<li>
-					<%= link_to "Sign up", new_user_registration_path, class: "signup-btn g-btn-small g-ml-16 font-weight-600" %>
+					<%= link_to "Sign up", new_user_registration_path, id: 'signup-btn', class: "g-btn-small g-ml-16 font-weight-600" %>
 				</li>
 			<% end %>
       <!--

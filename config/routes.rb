@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :countdowns, only: [:show, :index, :edit, :create, :destroy, :new]
+  get '/countdowns/new/next', to: 'countdowns#next', as: :next
+  get '/countdowns/new/preview', to: 'countdowns#preview', as: :preview
 
   devise_for :users, controllers: { registrations: "registrations", sessions: "sessions" }
   devise_scope :user do

@@ -156,14 +156,10 @@
 	}
   
   /*---------------------------------------------*/
-  button {
-  	outline: none !important;
-  	border: none;
-  	background: transparent;
-  }
-  
+    
   button:hover {
   	cursor: pointer;
+    opacity: 0.9;
   }
   
   iframe {
@@ -250,7 +246,8 @@
     top: 0;
     left: 0;
     background-color: rgba(54,84,99,0.7);
-		background-image: radial-gradient(circle, #0f1638, #17213e, #212c44, #2c3749, #39424e);
+    background-image: radial-gradient(circle, #363638, #363a3e, #343f41, #35433f, #3d463b);
+		//background-image: radial-gradient(circle, #0f1638, #17213e, #212c44, #2c3749, #39424e);
     
 		opacity: 0.6;
   }
