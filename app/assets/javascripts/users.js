@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {  
+$(document).on('turbolinks:load', function() {  
   $('.following-scroll').flickity( {
     // options
     cellAlign: 'left',

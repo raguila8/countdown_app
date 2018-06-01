@@ -3,16 +3,28 @@ class CountdownsController < ApplicationController
   end
 
   def show
+    @countdown = Countdown.find(params[:id])
   end
 
   def edit
   end
 
   def create
-    if params[:commit] == "Preview"
-      
+    @countdown = Countdown.new(countdown_params)
+    if !params[:countdown][:local_main_image].empty?
+      @countdown.main_image = File.open(File.join(Rails.root, "/public/#{params[:countdown][:local_main_image]}"))
     end
-    redirect_to user_path(current_user.id)
+
+    if !params[:countdown][:local_background_image].empty?
+      @countdown.background_image = File.open(File.join(Rails.root, "/public/#{params[:countdown][:local_background_image]}"))
+    end
+
+    if @countdown.save
+      flash[:sucess] = "New Countdown Created!"
+      redirect_to @countdown
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -25,6 +37,15 @@ class CountdownsController < ApplicationController
   def next
     respond_to do |format|
       @countdown = Countdown.new(countdown_params)
+      if !params[:countdown][:local_main_image].empty?
+        @countdown.main_image = File.open(File.join(Rails.root, "/public/#{params[:countdown][:local_main_image]}"))
+
+      end
+
+      if !params[:countdown][:local_background_image].empty?
+        @countdown.background_image = File.open(File.join(Rails.root, "/public/#{params[:countdown][:local_background_image]}"))
+      end
+ 
       @valid = @countdown.valid?
       if @valid
         format.json {

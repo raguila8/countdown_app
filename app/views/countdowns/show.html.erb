@@ -1,2 +1,30 @@
-<h1>Countdown#show</h1>
-<p>Find me in app/views/countdown/show.html.erb</p>
+<div class="countdown" id="countdown-show" style='background: url(<%=@countdown.background_image.url%>'>
+  <header class="masthead">
+    <div class="intro-body">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="brand-heading margin" style="color: <%=@countdown.title_color%>"><%=@countdown.name%></h3>
+			    <img src="<%=@countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
+          <div class="flip-counter clock flip-clock-wrapper" style=""></div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<input id="countdown-date" type="hidden" value="<%= @countdown.date %>">
+
+<style>
+  .navbar {
+    margin-bottom: 0 !important;
+  }
+
+  .flip-clock-label { 
+    color: <%= @countdown.labels_color %> !important;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+    color: <%= @countdown.time_color %> !important;
+    background-color: <%= @countdown.clock_background_color %> !important;
+  }
+</style>

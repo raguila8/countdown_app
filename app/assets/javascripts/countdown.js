@@ -1,5 +1,25 @@
-$(document).on('ready turbolinks:load', function() {
+$(document).on('turbolinks:load', function() {
   var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
+
+  if ($("#countdown-show").length) {
+    var clock;
+
+    // Grab the current date
+    var currentDate = new Date();
+
+    // Set some date in the future. In this case, it's always Jan 1
+    var futureDate  = new Date($("#countdown-date").val());
+
+    // Calculate the difference in seconds between the future and current date
+    var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+    // Instantiate a coutdown FlipClock
+	  clock = $('.clock').FlipClock(diff, {
+      clockFace: 'DailyCounter',
+      countdown: true
+    });
+
+  }
 
   if ($('#regForm').length) {
 
@@ -59,13 +79,18 @@ $(document).on('ready turbolinks:load', function() {
 
     $("body").on('click', '.main-image-scroll .default-image', function() {
       $mainImagePreview.attr("src", $(this)[0].src);
-      $("#countdown_main_image").val($(this)[0].src);
+      // set local_main_image input value
+      $("#countdown_local_main_image").val($(this)[0].src);
+      //$("#countdown_main_image").val($(this)[0].src);
       mainImageURL = $(this)[0].src;
     });
 
     $("body").on('click', '.background-image-scroll .default-image', function() {
       $backgroundImagePreview.attr("src", $(this)[0].src);
-      $("#countdown_background_image").val($(this)[0].src);
+      // set local_background_image input value
+      $("#countdown_local_background_image").val($(this)[0].src);
+
+      //$("#countdown_background_image").val($(this)[0].src);
       backgroundImageURL = $(this)[0].src;
     });
 
@@ -78,16 +103,18 @@ $(document).on('ready turbolinks:load', function() {
       var reader = new FileReader();
       reader.onload = function(e){
         image_base64 = e.target.result;
-        if ($current_input.attr('id') == "countdown_main_image_dummy") {
+        if ($current_input.attr('id') == "countdown_main_image") {
           main_image_base64 = image_base64;
           mainImageURL = "";
+          $("#countdown_local_main_image").val("");
           $mainImagePreview.attr("src", image_base64);
-          $("#countdown_main_image").val($current_input.val());
+          //$("#countdown_main_image").val($current_input[0].files[0].path);
         } else {
           background_image_base64 = image_base64;
           backgroundImageURL = "";
+          $("#countdown_background_main_image").val("");
           $backgroundImagePreview.attr("src", image_base64);
-          $("#countdown_background_image").val($current_input.val());
+          //$("#countdown_background_image").val($current_input.val());
         }
       };
       reader.readAsDataURL(file);
@@ -166,8 +193,10 @@ $(document).on('ready turbolinks:load', function() {
 				url: '/countdowns/new/next',  // submits it to the given url of the form
 				type: 'GET',
         async: false,
-				data: {	
-          countdown: { 
+				data: {
+          countdown: {
+            local_main_image: $('#countdown_local_main_image').val(),
+            local_background_image: $('#countdown_local_background_image').val(),
 					  name: parameters.get("countdown[name]"),
             date: parameters.get("countdown[date]"),
             main_image: parameters.get("countdown[main_image]"),
@@ -307,7 +336,7 @@ $(document).on('ready turbolinks:load', function() {
     $('#countdown_time_color').spectrum({
       preferredFormat: "hex",
       showInput: true,
-      color: "#ffffff"
+      color: "#cccccc"
     });
 
     $('#countdown_time_color').show();
@@ -316,7 +345,7 @@ $(document).on('ready turbolinks:load', function() {
     $('#countdown_clock_background_color').spectrum({
       preferredFormat: "hex",
       showInput: true,
-      color: "#ffffff"
+      color: "#333333"
     });
 
     $('#countdown_clock_background_color').show();
@@ -340,7 +369,7 @@ $(document).on('ready turbolinks:load', function() {
 			  url: '/countdowns/new/preview',  // submits it to the given url of the form
 				type: 'GET',
 				data: {	
-          countdown: { 
+          countdown: {
 					  name: parameters.get("countdown[name]"),
             date: parameters.get("countdown[date]"),
             main_image: parameters.get("countdown[main_image]"),
@@ -359,7 +388,6 @@ $(document).on('ready turbolinks:load', function() {
             var html = "<div id='error_explanation'><ul><li>" + data.error + "</li></ul></div>";
             $('#regForm h1').after(html);
           } else {
-            console.log("so far so good");
             $('#preview-modal .modal-body').empty();
             var countdown_html = "<div class='countdown' style='background: url(" + getBackgroundImageURL() + ") no-repeat center center fixed;'>" +
               "<header class='masthead'><div class='intro-body'><div class='container col-md-12'><div class='text-center'>" + 
@@ -370,7 +398,7 @@ $(document).on('ready turbolinks:load', function() {
  
 
             $('#preview-modal .modal-body').append(countdown_html);
-            console.log("bad");
+            
             var clock;
 
             // Grab the current date
@@ -388,8 +416,23 @@ $(document).on('ready turbolinks:load', function() {
               countdown: true
             });
 
-            $("#preview-modal").modal("show");
-            console.log("finsihed");
+
+            if ($("#flipclock-stylesheet").length) {
+              $("#flipclock-stylesheet").remove();
+            }
+
+            var sheet = document.createElement('style');
+            sheet.id = "flipclock-stylesheet";
+            sheet.innerHTML = ".flip-clock-label { color: " + 
+              parameters.get("countdown[labels_color]") + 
+              " !important;} .flip-clock-wrapper ul li a div div.inn { color: " + 
+               parameters.get("countdown[time_color]") + 
+               " !important; background-color: " + 
+               parameters.get("countdown[clock_background_color]") + 
+               " !important;}";
+             document.body.appendChild(sheet);
+            
+             $("#preview-modal").modal("show");
           }
 
         }
