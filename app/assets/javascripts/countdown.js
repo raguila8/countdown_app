@@ -78,20 +78,20 @@ $(document).on('turbolinks:load', function() {
     var $backgroundImagePreview = $("#background-image-preview img");
 
     $("body").on('click', '.main-image-scroll .default-image', function() {
-      $mainImagePreview.attr("src", $(this)[0].src);
+      $mainImagePreview.attr("src", $(this).attr('src'));
       // set local_main_image input value
-      $("#countdown_local_main_image").val($(this)[0].src);
+      $("#countdown_local_main_image").val($(this).attr('src'));
       //$("#countdown_main_image").val($(this)[0].src);
-      mainImageURL = $(this)[0].src;
+      mainImageURL = $(this).attr('src');
     });
 
     $("body").on('click', '.background-image-scroll .default-image', function() {
-      $backgroundImagePreview.attr("src", $(this)[0].src);
+      $backgroundImagePreview.attr("src", $(this).attr('src'));
       // set local_background_image input value
-      $("#countdown_local_background_image").val($(this)[0].src);
+      $("#countdown_local_background_image").val($(this).attr('src'));
 
       //$("#countdown_background_image").val($(this)[0].src);
-      backgroundImageURL = $(this)[0].src;
+      backgroundImageURL = $(this).attr('src');
     });
 
 
@@ -112,7 +112,7 @@ $(document).on('turbolinks:load', function() {
         } else {
           background_image_base64 = image_base64;
           backgroundImageURL = "";
-          $("#countdown_background_main_image").val("");
+          $("#countdown_local_background_image").val("");
           $backgroundImagePreview.attr("src", image_base64);
           //$("#countdown_background_image").val($current_input.val());
         }

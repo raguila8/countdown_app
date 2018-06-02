@@ -65,13 +65,12 @@
     max-width: 66.666667%;
   }
   position: relative;
-  width: 100%;
-  height: 100%;
   color: white;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 
   .masthead {
     display: table;
@@ -128,15 +127,13 @@
   }
 
   .flip-clock-label {
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
 }
 
 .clock {
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  max-width: 700px; 
+  display: inline-block;
+  width: auto; 
 }
 
 .next-prev-btn {
@@ -219,4 +216,357 @@
 
 #countdown-show {
   height: calc(100vh - 50px);
+}
+
+/* responsive clock */
+
+$clock-font-size-xl: 90px;
+$clock-height-xl: ($clock-font-size-xl * 1.2);
+$digit-gap-xl: 8px;
+$border-radius-xl: 10px;
+$dot-size-xl: 12px;
+
+$clock-font-size-lg: 70px;
+$clock-height-lg: ($clock-font-size-lg * 1.2);
+$digit-gap-lg: 7px;
+$border-radius-lg: 9px;
+$dot-size-lg: 10px;
+
+$clock-font-size-md: 50px;
+$clock-height-md: ($clock-font-size-md * 1.2);
+$digit-gap-md: 6px;
+$border-radius-md: 8px;
+$dot-size-md: 8px;
+
+$clock-font-size-sm: 30px;
+$clock-height-sm: ($clock-font-size-sm * 1.4);
+$digit-gap-sm: 5px;
+$border-radius-sm: 6px;
+$dot-size-sm: 6px;
+
+$clock-font-size-xs: 12px;
+$clock-height-xs: ($clock-font-size-xs * 1.8);
+$digit-gap-xs: 2px;
+$border-radius-xs: 3px;
+$dot-size-xs: 2px;
+
+/*
+@mixin responsive-clock($clock-font-size, $clock-height, $digit-gap, $border-radius, $dot-size) {
+  .flip-clock-wrapper ul {
+	  width: ($clock-font-size * 0.8);
+	  height: $clock-height;
+	  margin: 0 ($digit-gap / 2);
+  }
+
+  .flip-clock-wrapper ul li {
+	  line-height: $clock-height;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+	  font-size: $clock-font-size;
+  }
+
+  .flip-clock-wrapper ul,
+    .flip-clock-wrapper ul li a div div.inn {
+      border-radius: $border-radius;
+  }
+
+  .flip-clock-wrapper ul li a div.down {
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  .flip-clock-wrapper ul li a div.up:after {
+	  top: (($clock-height / 2) - 1px);
+  }
+
+  .flip-clock-dot.top {
+    top: ($clock-height / 2 - $clock-font-size * 0.2 - $dot-size / 2);
+  }
+
+  .flip-clock-dot.bottom {
+    top: ($clock-height / 2 + $clock-font-size * 0.2 - $dot-size / 2);
+  }
+
+  .flip-clock-dot{
+    width: $dot-size;
+    height: $dot-size;
+    left: $dot-size;
+  }
+
+  .flip-clock-divider {
+    width: ($dot-size * 3);
+  }
+}
+*/
+
+.countdown {
+
+@media (max-width: 575px) {
+  /* xs */
+  .flip-clock-wrapper ul {
+	  width: ($clock-font-size-xs * 0.8);
+	  height: $clock-height-xs;
+	  margin: 0 ($digit-gap-xs / 2);
+  }
+
+  .flip-clock-wrapper ul li {
+	  line-height: $clock-height-xs;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+	  font-size: $clock-font-size-xs;
+  }
+
+  .flip-clock-wrapper ul,
+    .flip-clock-wrapper ul li a div div.inn {
+      border-radius: $border-radius-xs;
+  }
+
+  .flip-clock-wrapper ul li a div.down {
+    border-bottom-left-radius: $border-radius-xs;
+    border-bottom-right-radius: $border-radius-xs;
+  }
+
+  .flip-clock-wrapper ul li a div.up:after {
+	  top: (($clock-height-xs / 2) - 1px);
+  }
+
+  .flip-clock-dot.top {
+    top: ($clock-height-xs / 2 - $clock-font-size-xs * 0.2 - $dot-size-xs / 2);
+  }
+
+  .flip-clock-dot.bottom {
+    top: ($clock-height-xs / 2 + $clock-font-size-xs * 0.2 - $dot-size-xs / 2);
+  }
+
+  .flip-clock-dot{
+    width: $dot-size-xs;
+    height: $dot-size-xs;
+    left: $dot-size-xs;
+  }
+
+  .flip-clock-divider {
+    width: ($dot-size-xs * 3);
+  }
+
+  .clock .seconds {
+    display: none;
+  }
+
+  .clock ul:nth-last-of-type(-n+2) {
+    display: none;
+  }
+  
+  .container {
+    padding: 0;
+  }
+
+  .flip-clock-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+
+@media(min-width:576px){
+  /* sm */
+
+  .flip-clock-wrapper ul {
+	  width: ($clock-font-size-sm * 0.8);
+	  height: $clock-height-sm;
+	  margin: 0 ($digit-gap-sm / 2);
+  }
+
+  .flip-clock-wrapper ul li {
+	  line-height: $clock-height-sm;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+	  font-size: $clock-font-size-sm;
+  }
+
+  .flip-clock-wrapper ul,
+    .flip-clock-wrapper ul li a div div.inn {
+      border-radius: $border-radius-sm;
+  }
+
+  .flip-clock-wrapper ul li a div.down {
+    border-bottom-left-radius: $border-radius-sm;
+    border-bottom-right-radius: $border-radius-sm;
+  }
+
+  .flip-clock-wrapper ul li a div.up:after {
+	  top: (($clock-height-sm / 2) - 1px);
+  }
+
+  .flip-clock-dot.top {
+    top: ($clock-height-sm / 2 - $clock-font-size-sm * 0.2 - $dot-size-sm / 2);
+  }
+
+  .flip-clock-dot.bottom {
+    top: ($clock-height-sm / 2 + $clock-font-size-sm * 0.2 - $dot-size-sm / 2);
+  }
+
+  .flip-clock-dot{
+    width: $dot-size-sm;
+    height: $dot-size-sm;
+    left: $dot-size-sm;
+  }
+
+  .flip-clock-divider {
+    width: ($dot-size-sm * 3);
+  } 
+}
+
+@media(min-width:768px){
+  /* md */
+  .flip-clock-wrapper ul {
+	  width: ($clock-font-size-md * 0.8);
+	  height: $clock-height-md;
+	  margin: 0 ($digit-gap-md / 2);
+  }
+
+  .flip-clock-wrapper ul li {
+	  line-height: $clock-height-md;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+	  font-size: $clock-font-size-md;
+  }
+
+  .flip-clock-wrapper ul,
+    .flip-clock-wrapper ul li a div div.inn {
+      border-radius: $border-radius-md;
+  }
+
+  .flip-clock-wrapper ul li a div.down {
+    border-bottom-left-radius: $border-radius-md;
+    border-bottom-right-radius: $border-radius-md;
+  }
+
+  .flip-clock-wrapper ul li a div.up:after {
+	  top: (($clock-height-md / 2) - 1px);
+  }
+
+  .flip-clock-dot.top {
+    top: ($clock-height-md / 2 - $clock-font-size-md * 0.2 - $dot-size-md / 2);
+  }
+
+  .flip-clock-dot.bottom {
+    top: ($clock-height-md / 2 + $clock-font-size-md * 0.2 - $dot-size-md / 2);
+  }
+
+  .flip-clock-dot{
+    width: $dot-size-md;
+    height: $dot-size-md;
+    left: $dot-size-md;
+  }
+
+  .flip-clock-divider {
+    width: ($dot-size-md * 3);
+  }
+
+}
+
+@media(min-width:992px){
+  /* lg */
+  .flip-clock-wrapper ul {
+	  width: ($clock-font-size-lg * 0.8);
+	  height: $clock-height-lg;
+	  margin: 0 ($digit-gap-lg / 2);
+  }
+
+  .flip-clock-wrapper ul li {
+	  line-height: $clock-height-lg;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+	  font-size: $clock-font-size-lg;
+  }
+
+  .flip-clock-wrapper ul,
+    .flip-clock-wrapper ul li a div div.inn {
+      border-radius: $border-radius-lg;
+  }
+
+  .flip-clock-wrapper ul li a div.down {
+    border-bottom-left-radius: $border-radius-lg;
+    border-bottom-right-radius: $border-radius-lg;
+  }
+
+  .flip-clock-wrapper ul li a div.up:after {
+	  top: (($clock-height-lg / 2) - 1px);
+  }
+
+  .flip-clock-dot.top {
+    top: ($clock-height-lg / 2 - $clock-font-size-lg * 0.2 - $dot-size-lg / 2);
+  }
+
+  .flip-clock-dot.bottom {
+    top: ($clock-height-lg / 2 + $clock-font-size-lg * 0.2 - $dot-size-lg / 2);
+  }
+
+  .flip-clock-dot{
+    width: $dot-size-lg;
+    height: $dot-size-lg;
+    left: $dot-size-lg;
+  }
+
+  .flip-clock-divider {
+    width: ($dot-size-lg * 3);
+  }
+
+}
+
+@media(min-width:1200px){
+  /* xl */
+  .flip-clock-wrapper ul {
+	  width: ($clock-font-size-xl * 0.8);
+	  height: $clock-height-xl;
+	  margin: 0 ($digit-gap-xl / 2);
+  }
+
+  .flip-clock-wrapper ul li {
+	  line-height: $clock-height-xl;
+  }
+
+  .flip-clock-wrapper ul li a div div.inn {
+	  font-size: $clock-font-size-xl;
+  }
+
+  .flip-clock-wrapper ul,
+    .flip-clock-wrapper ul li a div div.inn {
+      border-radius: $border-radius-xl;
+  }
+
+  .flip-clock-wrapper ul li a div.down {
+    border-bottom-left-radius: $border-radius-xl;
+    border-bottom-right-radius: $border-radius-xl;
+  }
+
+  .flip-clock-wrapper ul li a div.up:after {
+	  top: (($clock-height-xl / 2) - 1px);
+  }
+
+  .flip-clock-dot.top {
+    top: ($clock-height-xl / 2 - $clock-font-size-xl * 0.2 - $dot-size-xl / 2);
+  }
+
+  .flip-clock-dot.bottom {
+    top: ($clock-height-xl / 2 + $clock-font-size-xl * 0.2 - $dot-size-xl / 2);
+  }
+
+  .flip-clock-dot{
+    width: $dot-size-xl;
+    height: $dot-size-xl;
+    left: $dot-size-xl;
+  }
+
+  .flip-clock-divider {
+    width: ($dot-size-xl * 3);
+  }
+
+}
+
 }

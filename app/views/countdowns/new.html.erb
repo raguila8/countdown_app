@@ -70,7 +70,7 @@
       </div>
       <div class="text-center">
         <label for="countdown_main_image" class="btn font-size-16 font-weight-600 g-mb-10 g-btn-secondary image-upload-label g-mt-30 text-center"><span class="glyphicon glyphicon-cloud-upload g-mr-3"></span> Upload Image</label>
-  		  <%= f.file_field :main_image, value: "/main_images/main_image1.jpg", class: "form-control image-upload" %>
+  		  <%= f.file_field :main_image, class: "form-control image-upload" %>
 
         <div id="main-image-preview">
           <img class="imgFrame g-mt-20" src="/main_images/main_image1.jpg" alt="Selected Countdown Image" style="max-width: 150px; max-height: 150px;" >
@@ -95,7 +95,7 @@
 
       <div class="text-center">
         <label for="countdown_background_image" class="btn font-size-16 font-weight-600 g-mb-10 g-btn-secondary image-upload-label g-mt-30 text-center"><span class="glyphicon glyphicon-cloud-upload g-mr-3"></span> Upload Image</label>
-  		  <%= f.file_field :background_image, value: "/background_images/background_image1.jpg", class: "form-control image-upload" %>
+  		  <%= f.file_field :background_image, class: "form-control image-upload" %>
 
         <div id="background-image-preview">
           <img class="imgFrame g-mt-20" src="/background_images/background_image1.jpg" alt="Selected Background Image" style="max-width: 150px; max-height: 150px;" >
