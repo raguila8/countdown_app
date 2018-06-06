@@ -2,6 +2,7 @@ class Countdown < ApplicationRecord
   mount_uploader :main_image, CountdownMainImageUploader
   mount_uploader :background_image, CountdownBackgroundImageUploader
 
+  belongs_to :user
   validates :name, presence: true, length: { maximum: 150 }
   validates :date, presence: true
   validate :date_cannot_be_in_the_past

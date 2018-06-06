@@ -12,6 +12,8 @@
  *
  *= require forms/normalize.css
  *= require bootstrap.min.css
+ *= require font-awesome
+ *= require animate.min.css
  *= require flipclock.css
  *= require forms/main.scss
  *= require forms/util.scss

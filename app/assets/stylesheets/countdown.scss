@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$primary-grey: #363636;
+$primary-green: #4CAF52;
+
 
 #regForm .tab {
   display: none;
@@ -216,6 +219,54 @@
 
 #countdown-show {
   height: calc(100vh - 50px);
+}
+
+/***************** Countdown#show ******************/
+
+#animated-modal-toggle {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: 8%;
+  top: 5%;
+  opacity: 0.8;
+  background-color: rgb(57, 190, 185);
+  border-radius: 50%;
+  
+  a {
+    display: table-cell;
+    vertical-align: middle; 
+    text-align: center;
+    font-size: 1.5em;
+    width: 50px;
+    height: 50px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+/* countdown actions modal */
+
+#countdown-actions-modal {
+
+  #closebt-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .closebt {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
 }
 
 /* responsive clock */

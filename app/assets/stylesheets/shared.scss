@@ -143,6 +143,16 @@ a, .link {
 	font-size: 1.2;
 }
 
+/* widths */
+
+.g-w-25 {
+  width: 25% !important;
+}
+
+.g-w-33 {
+  width: 33% !important;
+}
+
 /************ Padding and Margins *****************/
 
 .g-mt-50 {
@@ -191,6 +201,14 @@ a, .link {
 
 .g-mb-20 {
 	margin-bottom: 1.42857rem !important;
+}
+
+.g-mb-25 {
+  margin-bottom: 25px !important;
+}
+
+.g-mb-30 {
+  margin-bottom: 30px !important;
 }
 
 
@@ -286,6 +304,14 @@ a, .link {
 
 .g-pa-20 {
 	padding: 1.42857rem !important;
+}
+
+.g-pa-5 {
+  padding: 5px !important;
+}
+
+.g-pa-8 {
+  padding: 8px !important;
 }
 
 .g-pb-20 {
@@ -636,6 +662,14 @@ a, .link {
 
 .dark-grey-color {
 	color: #39424e;
+}
+
+.white {
+  color: #fff;
+}
+
+.black {
+  color: #000;
 }
 
 /* borders */
@@ -1061,4 +1095,205 @@ footer {
 		-moz-transform: translateY(0px);
 		transform: translateY(0px);
 	}
+}
+
+/* start cta */
+	section.cta {
+  position: relative;
+  padding: 250px 0;
+  background-image: url("/cta-bg-1.jpg");
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+section.cta .cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+section.cta .cta-content h2 {
+  font-size: 40px;
+  max-width: 450px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  section.cta .cta-content h2 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 1050px) {
+  section.cta #cta-btn {
+    margin-bottom: 100px;
+  } 
+}
+
+@media (max-width: 676px) {
+  section.cta #cta-btn {
+    margin-bottom: 120px;
+  } 
+}
+
+
+section.cta .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#cta-btn {
+  min-width: 200px;
+  max-width: 250px;
+}
+/* end cta */
+
+/* share buttons */
+
+.sm-wrapper {
+  position: absolute;
+  bottom: 0;
+  //margin-bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+}
+
+
+@media (max-width: 1050px) {
+  .sm-wrapper {
+    margin-bottom: 0px;
+  }
+}
+
+/* Style the Un-order list by setting its list-style to none */
+.sm-wrapper ul {
+  list-style: none;
+}
+
+/* Style the list items inside the UL list, by setting its width, height and line-height 
+  and float them to left and set its border and border-radius.
+ */
+.sm-wrapper ul li {
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  margin: 0 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 5px solid #D8E2DC;
+  float: left;
+  transition: all 0.5s ease;
+}
+
+/* Style the icons by setting its color and margin-top value to 20px 
+to align it properly */
+.sm-wrapper ul li .fa {
+  color: #D8E2DC;
+  margin-top: 20px;
+  transition: all 0.5s ease;
+}
+
+/* Now target the specific li classes for styling and use box-shadow effect to border and text-shadow effect
+  to icons for glowing effect and use transition property for smooth transition effect. */
+/*facebook*/
+.sm-wrapper ul li:hover.facebook {
+  border: 5px solid #3b5998;
+  box-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+.sm-wrapper ul li:hover .fa-facebook {
+  color: #3b5998;
+  text-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+/*twitter*/
+.sm-wrapper ul li:hover.twitter {
+  border: 5px solid #00aced;
+  box-shadow: 0 0 15px #00aced;
+  transition: all 0.5s ease;
+}
+
+.sm-wrapper ul li:hover .fa-twitter {
+  color: #00aced;
+  text-shadow: 0 0 15px #00aced;
+  transition: all 0.5s ease;
+}
+
+/* instagram */
+.sm-wrapper ul li:hover.instagram {
+  border: 5px solid #bc2a8d;
+  box-shadow: 0 0 15px #bc2a8d;
+  transition: all 0.5s ease;
+}
+
+.sm-wrapper ul li:hover .fa-instagram {
+  color: #bc2a8d;
+  text-shadow: 0 0 15px #bc2a8d;
+  transition: all 0.5s ease;
+}
+
+/* google */
+.sm-wrapper ul li:hover.google {
+  border: 5px solid #dd4b39;
+  box-shadow: 0 0 15px #dd4b39;
+  transition: all 0.5s ease;
+}
+
+.sm-wrapper ul li:hover .fa-google {
+  color: #dd4b39;
+  text-shadow: 0 0 15px #dd4b39;
+  transition: all 0.5s ease;
+}
+
+/* whatsapp */
+.sm-wrapper ul li:hover.whatsapp {
+  border: 5px solid #4dc247;
+  box-shadow: 0 0 15px #4dc247;
+  transition: all 0.5s ease;
+}
+
+.sm-wrapper ul li:hover .fa-whatsapp {
+  color: #4dc247;
+  text-shadow: 0 0 15px #4dc247;
+  transition: all 0.5s ease;
+}
+
+
+/* media queries */
+
+@media screen and (max-width: 640px){
+  .sm-wrapper {
+      width: 350px;
+  }
+  .sm-wrapper ul li{
+      margin-top: 10px;
+  }
+  .sm-wrapper ul li.google{
+      margin-left: 60px;
+  }
+}
+
+
+@media screen and (max-width: 340px){
+  .sm-wrapper {
+      width: 150px;
+  }
+  .sm-wrapper ul li{
+      margin:15px;
+  }
+  .sm-wrapper ul li.google{
+      margin-left: 15px;
+  }
 }

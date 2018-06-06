@@ -19,6 +19,7 @@ class CountdownsController < ApplicationController
       @countdown.background_image = File.open(File.join(Rails.root, "/public/#{params[:countdown][:local_background_image]}"))
     end
 
+    @countdown.user = current_user
     if @countdown.save
       flash[:sucess] = "New Countdown Created!"
       redirect_to @countdown
@@ -46,6 +47,7 @@ class CountdownsController < ApplicationController
         @countdown.background_image = File.open(File.join(Rails.root, "/public/#{params[:countdown][:local_background_image]}"))
       end
  
+      @countdown.user = current_user
       @valid = @countdown.valid?
       if @valid
         format.json {
@@ -63,6 +65,7 @@ class CountdownsController < ApplicationController
   def preview
     respond_to do |format|
       @countdown = Countdown.new(countdown_params)
+      @countdown.user = current_user
       @valid = @countdown.valid?
       if @valid
         format.json {

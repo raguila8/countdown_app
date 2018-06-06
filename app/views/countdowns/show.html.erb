@@ -1,5 +1,10 @@
 <div class="countdown" id="countdown-show" style='background: url(<%=@countdown.background_image.url%>'>
   <header class="masthead">
+<!--
+    <div id="animated-modal-toggle" class="text-center">
+      <a href="#countdown-actions-modal" class="glyphicon glyphicon-modal-window" style="color: <%#=@countdown.title_color%>"></a>
+-->
+    </div>
     <div class="intro-body">
       <div class="container">
         <div class="text-center">
@@ -13,6 +18,47 @@
     </div>
   </header>
 </div>
+
+
+<section class="cta" id="cta">
+  <div class="cta-content">
+    <div class="container">
+      <h2 class="white">Use it on your website</h2>
+      <p class="white">Get the source code and use the countdown on your personal website!</p>
+		  <button type="button" id="cta-btn" class= "btn btn-lg g-btn-primary font-size-16 g-mr-20 font-weight-600"><span class="glyphicon glyphicon-download"></span> Download</button>
+    </div>
+  </div>
+  <div class="overlay"></div>
+  <div class="sm-wrapper text-center">
+    <h4 class="white g-mb-25 font-weight-600 g-mt-40"> Share the countdown on social media </h4>
+	  <ul>
+      <li class="facebook"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></li>
+      <li class="twitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></li>
+      <li class="instagram"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></li>
+      <li class="google"><i class="fa fa-google fa-2x" aria-hidden="true"></i></li>
+      <li class="whatsapp"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></li>
+    </ul>
+	</div>
+</section>
+
+<% if current_user == @countdown.user %>
+  <div class="text-center container g-primary-card g-mt-40 g-mb-40 g-pa-20">
+    <h2 class="text-center g-mb-20">Customize Countdown</h2>
+    <%= link_to edit_countdown_path(@countdown.id), style: "color: #fff;" do %>
+
+      <button type="button" class= "btn g-pa-8 g-btn-primary font-size-16 g-mr-20 font-weight-600 g-mb-10 g-w-33"><span class="glyphicon glyphicon-edit"></span> Edit</button> 
+    <% end %>
+    <%= link_to @countdown, method: :delete,
+                            style: "color: #394251;",
+																				data: { confirm: "You sure?" } do %>
+      <button type="button" class="btn g-pa-8 font-size-16 font-weight-600 g-mb-10 g-w-33"><span class="glyphicon glyphicon-remove"></span> Delete</button><br>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%#= render 'countdown_actions_modal' %>
+
 
 <input id="countdown-date" type="hidden" value="<%= @countdown.date %>">
 

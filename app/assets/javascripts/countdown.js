@@ -1,6 +1,18 @@
 $(document).on('turbolinks:load', function() {
   var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 
+  if ($("#countdown-actions-modal").length) {
+    $("#animated-modal-toggle a").animatedModal({
+      modalTarget: 'countdown-actions-modal'
+    });
+  }
+/*
+  if ($("#countdown-modal").length) {
+    $("#previewBtn").animatedModal({
+      modalTarget: 'countdown-modal'
+    });
+  });
+*/
   if ($("#countdown-show").length) {
     var clock;
 

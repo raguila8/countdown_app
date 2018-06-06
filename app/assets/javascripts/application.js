@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap.min.js
+//= require animatedModal.js
 //= require flipclock.js
 //= require flickity
 //= require spectrum
