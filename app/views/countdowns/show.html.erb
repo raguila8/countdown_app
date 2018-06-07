@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <meta property="og:title" content="Mark The Date!" />
+  <meta property="og:description" content="<%= @countdown.name %>" />
+  <meta property="og:image" content="<%= @countdown.main_image.url %>" />
+  <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b121e81093c0e0011b0377d&product=inline-share-buttons' async='async'></script>
+<% end %>
 <div class="countdown" id="countdown-show" style='background: url(<%=@countdown.background_image.url%>'>
   <header class="masthead">
     <div class="intro-body">
@@ -53,7 +59,8 @@
   </div>
 <% end %>
 
-<%= social_share_button_tag("Mark the date!", url: countdown_url(@countdown.id), image: @countdown.main_image.thumb.url, desc: @countdown.name, allow_sites: %w(twitter facebook google_plus)) %>
+<div class="sharethis-inline-share-buttons"></div>
+
 
 <%#= render 'countdown_actions_modal' %>
 
