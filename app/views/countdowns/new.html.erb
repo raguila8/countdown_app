@@ -1,7 +1,7 @@
 <%= render '/countdowns/preview.html.erb' %>
 <% provide(:title, "New Countdown") %>
 
-<%= form_for(@countdown, :html => { class: "g-primary-card", id: "regForm" }) do |f| %>
+<%= form_for(@countdown, :html => { class: "g-primary-card countdown-form", id: "regForm" }) do |f| %>
 
   <h1>New Countdown</h1>
 

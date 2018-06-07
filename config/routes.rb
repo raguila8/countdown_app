@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :countdowns, only: [:show, :index, :edit, :create, :destroy, :new]
+  resources :countdowns, only: [:show, :index, :edit, :create, :destroy, :new, :update]
   get '/countdowns/new/next', to: 'countdowns#next', as: :next
   get '/countdowns/new/preview', to: 'countdowns#preview', as: :preview
 

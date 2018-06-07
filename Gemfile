@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rubocop-rails'
 
+
+gem 'rubyzip'
 # authentication
 gem 'devise'
 

@@ -1,10 +1,5 @@
 <div class="countdown" id="countdown-show" style='background: url(<%=@countdown.background_image.url%>'>
   <header class="masthead">
-<!--
-    <div id="animated-modal-toggle" class="text-center">
-      <a href="#countdown-actions-modal" class="glyphicon glyphicon-modal-window" style="color: <%#=@countdown.title_color%>"></a>
--->
-    </div>
     <div class="intro-body">
       <div class="container">
         <div class="text-center">
@@ -25,7 +20,9 @@
     <div class="container">
       <h2 class="white">Use it on your website</h2>
       <p class="white">Get the source code and use the countdown on your personal website!</p>
+      <%= link_to countdown_path(@countdown.id, format: :zip) do %>
 		  <button type="button" id="cta-btn" class= "btn btn-lg g-btn-primary font-size-16 g-mr-20 font-weight-600"><span class="glyphicon glyphicon-download"></span> Download</button>
+      <% end %>
     </div>
   </div>
   <div class="overlay"></div>

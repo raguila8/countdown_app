@@ -6,6 +6,26 @@
   </div>
             
   <div class="countdown-modal-content">
-    <!--Your modal content goes here-->
+    <div class="countdown" style='background: url(<%=@countdown.background_image.url%>'>
+  <header class="masthead">
+<!--
+    <div id="animated-modal-toggle" class="text-center">
+      <a href="#countdown-actions-modal" class="glyphicon glyphicon-modal-window" style="color: <%#=@countdown.title_color%>"></a>
+
+    </div>-->
+    <div class="intro-body">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="brand-heading margin" style="color: <%=@countdown.title_color%>"><%=@countdown.name%></h3>
+			    <img src="<%=@countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
+          <div class="text-center">
+            <div class="flip-counter clock flip-clock-wrapper" style=""></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
   </div>
 </div>

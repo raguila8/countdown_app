@@ -1,149 +1,69 @@
 <% provide(:title, "Progress") %>
-<div class="container user-profile">
-  <div class="g-mb-40 g-primary-card g-pa-20" id="profile-<%=@user.id%>">
-  <div class="row">
-    <div class="col-lg-3 col-md-3">
-			<!-- User Image -->
-			<div class="profile-img-container <%= "camera-toggle" if current_user == @user %>  g-mb-40">
-<!--
-				<%# if current_user == @user %>
-					<%#= form_for @user, :url => update_profile_image_path(:path => 'show'), html: { multipart: true, class: "profile-img-edit" } do |f| %>
-						<label style="cursor: pointer;">
-						<%# if @user.profile_image? %>
-							<img class="filter-on-hover profile-img img-responsive w-100" src="<%#=@user.profile_image.url%>">
-						<%# else %>
-							<img class="filter-on-hover profile-img img-responsive w-100" src="/einstein.png">
-						<%# end %>
-						<span class="edit-image glyphicon glyphicon-camera"></span>
-							<%#=f.file_field :profile_image, class: "profile-img-file", accept: 'image/jpeg,image/jpg,image/gif,image/png' %>
-						</label>
-					<%# end %>
--->
-				<%# else %>
-					<% if @user.profile_image? %>
-						<img class="profile-img img-responsive w-100" src="<%=@user.profile_image.url%>">
-					<% else %>
-						<img class="profile-img img-responsive w-100" src="/me.jpg">
-					<% end %>
-				<%# end %>
-			</div>
-			<!-- End User Image -->
-			<!-- User Contact Buttons -->
-			<% if signed_in? and current_user != @user %>
-				<div class="user-contact-btns-<%=@user.id%>">
-					<%# if !current_user.following?(@user) %>
-						<button class="btn btn-block g-mb-10 g-pv-12 g-btn-secondary relationship-btn follow-btn" id="follow-btn-<%=@user.id%>">Follow</button>
-					<%# else %>
-						<!--<button class="btn btn-block g-mb-10 g-pv-12 g-btn-secondary relationship-btn unfollow-btn" id="following-btn-<%#=@user.id%>">Unfollow</button>-->
-					<%# end %>
-				</div>
-			<% else %>
-        <button class="btn btn-block g-mb-10 g-pv-12 g-btn-secondary">Edit Profile</button>
-      <% end %>
-			<!-- End User Contact Buttons -->	
-		</div>
 
-			<div class="col-lg-9 col-md-9">
-				<div class="col-md-10 col-lg-10">
+  <h1 class="text-center font-weight-600">Countdowns</h1>
 
-					<!-- User details -->
-					<h2 class="font-weight-600 dont-break-out username"><%=@user.username%></h2>
-					<% if @user.name and !@user.name.blank?%>
-						<h4 class="font-weight-500 opacity-8 g-mb-10 g-mt-0 ellipsis-wrap">
-							<%=@user.name%>
-						</h4>
-					<% end %>
-					<!-- End User details -->
-					<!-- User position -->
-<!--
-					<ul class="list-inline g-mb-10 font-weight-200">
-						<%# if @user.occupation and !@user.occupation.blank?%>
-							<li class="list-inline-item g-mr-20"><span class="glyphicon glyphicon-briefcase g-mr-8"></span><%#=@user.occupation%> </li>
-						<%# end %>
-						<%# if @user.school and !@user.school.blank? %>
-							<li class="list-inline-item g-mr-20"><span class="glyphicon glyphicon-education g-mr-8"></span><%#=@user.school%></li>
-						<%# end %>
-					</ul>
--->
-					<!-- End User position -->
-				</div>
-<!--
-				<div class="col-md-2 col-lg-2 text-center">
-					<div class="text-center inline-block max-width-150 vertical-align-top">
-						<%# percent = percentage(@user.solved_problems.count, Problem.all.count).round(2) %>
-						<div class="c100 p<%#=percent.round%> small center <%#=color(percent)%>">
-							<span><%#=percent.round%>%</span>
-							<div class="slice">
-								<div class="bar"></div>
-								<div class="fill"></div>
-							</div>
-						</div>
-						<p class="g-mt-5">Completion</p>
-					</div>
-				</div>
--->
-
-				<hr class="g-mv-20 light-gray-border clear-both">
-
-				<!-- User Bio -->
-				<% if @user.bio and !@user.bio.blank? %>
-					<p class="dont-break-out"><%= @user.bio %></p>
-
-					<hr class="g-mv-20 light-gray-border">
-				<% end %>
-				<!-- End User Bio  -->
-
-				<!-- General Branch User stats -->
-<!--
-				<div class="w-100 text-center">
-					<div class="col-md-4 col-lg-4">
-							<h1 class="font-weight-900 g-mb-20"><%#=@user.score%></h1>
-							<h4 class="font-weight-300"><img class="inline-icon" title="User Score"src="/score_icon.png"></h4>
-
-					</div>
-					<div class="col-md-4 col-lg-4">
-						<h1 class="font-weight-900 g-mb-20"><%#=@user.solved%></h1>
-						<h4 class="font-weight-300"><img class="inline-icon" title="Problems Solved" src="/count_icon.png"></h4>
-					</div>
-					<div class="col-md-4 col-md-4">
-						<h1 class="font-weight-900 g-mb-20"><%#=@kudos%></h1>
-						<h4 class="font-weight-300"><img class="inline-icon" title="Kudos Points" src="/kudos_icon.png"></h4>
-					</div>
-				</div>
--->
-				<!-- End General Branch User stats -->
-			</div>
-		</div>
-  </div>
-
-
-  <div class="g-mb-40 g-pb-20 g-primary-card" id="profile-<%=@user.id%>">
-    <!-- Overall stats Header -->
-		<h3 class="stats-title text-center dark-purple-bg w-100 g-pa-20 font-weight-600 g-mt-0">
-			Countdowns
-		</h3>
-		<!-- End overall stats header -->
-    <div class="row following-scroll"> 
-      <% 30.times do |n| %>
-      <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-        <h3 class=" text-center font-weight-600">Title</h3>
-        <div class="text-center row">
-          <img src="/avatar.jpg" alt="Avatar" width="100" height="100" class="g-mb-5 rounded-circle">
-          <p class="font-weight-200"><%=n%> Followers</p>
-          <button class="btn-sm g-ph-20 g-mb-10 g-pv-5 g-btn-secondary">Follow</button>
+  <% @user.countdowns.each do |countdown| %>
+    <div class="countdown countdown-element g-mb-50 container" style='background: url(<%=countdown.background_image.url%>'>
+  <header class="masthead">
+    <div class="intro-body">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="brand-heading margin" style="color: <%=countdown.title_color%>"><%=countdown.name%></h3>
+			    <img src="<%=countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
+          <div class="text-center">
+            <div class="flip-counter clock flip-clock-wrapper" id="clock-<%=countdown.id%>" style=""></div>
+          </div>
         </div>
       </div>
-      <% end %>
     </div>
-  </div>
+  </header>
+</div>
+
+<input class="countdown-date-element" id="date-<%=countdown.id%>" type="hidden" value="<%= countdown.date %>">
 
 
-  <div class="g-mb-40 g-pb-20 g-primary-card" id="profile-<%=@user.id%>">
-    <!-- Overall stats Header -->
-		<h3 class="stats-title text-center dark-purple-bg w-100 g-pa-20 font-weight-600 g-mt-0">
-			Following
-		</h3>
-		<!-- End overall stats header -->
+<style>
+  #clock-<%=countdown.id%> .flip-clock-label { 
+    color: <%= countdown.labels_color %> !important;
+  }
+
+  #clock-<%=countdown.id%> ul li a div div.inn {
+    color: <%= countdown.time_color %> !important;
+    background-color: <%= countdown.clock_background_color %> !important;
+  }
+</style>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="g-mb-40 g-pb-20 container g-mt-40" id="profile-<%=@user.id%>">
     <div class="row following-scroll"> 
       <% 30.times do |n| %>
       <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
