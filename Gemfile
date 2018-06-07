@@ -33,10 +33,13 @@ gem 'devise'
 
 gem 'jquery-turbolinks'
 
+gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'font-awesome-rails'
+
+gem 'social-share-button'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -72,7 +75,6 @@ end
 
 group :production do
   gem 'pg', '0.18.4'
-  gem 'fog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

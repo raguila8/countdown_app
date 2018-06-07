@@ -53,6 +53,7 @@
   </div>
 <% end %>
 
+<%= social_share_button_tag("Mark the date!", url: countdown_path(@countdown.id), image: @countdown.main_image.thumb.url, desc: @countdown.name, allow_sites: %w(twitter facebook google_plus)) %>
 
 <%#= render 'countdown_actions_modal' %>
 
