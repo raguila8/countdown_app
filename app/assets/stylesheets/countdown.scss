@@ -5,6 +5,63 @@
 $primary-grey: #363636;
 $primary-green: #4CAF52;
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 18px;
+  bottom: -10px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #4CAF52;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4CAF52;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 /* Edit Form */
 
 #ct-edit-form {
@@ -88,7 +145,7 @@ $primary-green: #4CAF52;
   .masthead {
     display: table;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 200px 0;
     text-align: center;
     color: white; }
@@ -231,8 +288,10 @@ $primary-green: #4CAF52;
 
 #countdown-show {
   height: calc(100vh - 50px);
+  width: 100%;
 }
 
+/*
 .countdown-element {
   height: calc(75vh);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -249,6 +308,7 @@ $primary-green: #4CAF52;
   }
 }
 
+*/
 
 /***************** Countdown#show ******************/
 
@@ -391,6 +451,12 @@ $dot-size-xs: 2px;
   }
 }
 */
+
+#preview-modal {
+  .countdown {
+    min-height: 75vh;
+  }
+}
 
 .countdown {
 

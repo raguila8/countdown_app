@@ -4,16 +4,24 @@
   <meta property="og:image" content="<%= @countdown.main_image.url %>" />
   <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b121e81093c0e0011b0377d&product=inline-share-buttons' async='async'></script>
 <% end %>
+<span class="st_sharethis" st_url="http://sharethis.com" st_title="Sharing is great!" st_image="<%=@countdown.main_image.url%>"></span>
 <div class="countdown" id="countdown-show" style='background: url(<%=@countdown.background_image.url%>'>
   <header class="masthead">
     <div class="intro-body">
       <div class="container">
         <div class="text-center">
-          <h3 class="brand-heading margin" style="color: <%=@countdown.title_color%>"><%=@countdown.name%></h3>
-			    <img src="<%=@countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
-          <div class="text-center">
-            <div class="flip-counter clock flip-clock-wrapper" style=""></div>
-          </div>
+          <% if @countdown.main_image.url %>
+            <h3 class="brand-heading margin" style="color: <%=@countdown.title_color%>"><%=@countdown.name%></h3>
+			      <img src="<%=@countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
+            <div class="text-center">
+              <div class="flip-counter clock flip-clock-wrapper" style=""></div>
+            </div>
+          <% else %>
+            <h3 class="brand-heading g-mb-50" style="color: <%=@countdown.title_color%>"><%=@countdown.name%></h3>
+            <div class="text-center g-mt-100">
+              <div class="flip-counter clock flip-clock-wrapper" style=""></div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

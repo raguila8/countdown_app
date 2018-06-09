@@ -14,32 +14,7 @@ $(document).on('turbolinks:load', function() {
   });
 */
 
-  if ($(".countdown-date-element").length) {
-    $dates = $(".countdown-date-element");
-    console.log($dates.length);
-    for (var i = 0; i < $dates.length; i++) {
-      var clock;
-
-      // Grab the current date
-      var currentDate = new Date();
-
-      // Set some date in the future. In this case, it's always Jan 1
-      var futureDate  = new Date($dates[i].value);
-
-      // Calculate the difference in seconds between the future and current date
-      var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-
-      var date_id = $($dates[i]).attr('id');
-      var id = parseInt(date_id.substring(5, date_id.length));
-      // Instantiate a coutdown FlipClock
-	    clock = $("#clock-" + id).FlipClock(diff, {
-        clockFace: 'DailyCounter',
-        countdown: true
-      });
-
-    }
-  }
-  if ($("#countdown-show").length) {
+    if ($("#countdown-show").length) {
     var clock;
 
     // Grab the current date
@@ -75,10 +50,11 @@ $(document).on('turbolinks:load', function() {
     });
 
     var mainImageURL = "/main_images/main_image1.jpg";
+    //var mainImageURL = "";
     var backgroundImageURL = "/background_images/background_image1.jpg";
 
-    var main_image_base64;
-    var background_image_base64; 
+    var main_image_base64 = "";
+    var background_image_base64 = ""; 
 
     function getMainImageURL() {
       if (mainImageURL.length) {
@@ -96,8 +72,20 @@ $(document).on('turbolinks:load', function() {
       }
     }
 
+
     var $mainImagePreview = $("#main-image-preview img");
     var $backgroundImagePreview = $("#background-image-preview img");
+
+    $("#main-image-switch").change(function() {
+      if ($(this).is(":checked")) {
+        mainImageURL = $mainImagePreview.attr("src");
+        $("#countdown_local_main_image").val($mainImagePreview.attr("src"));
+      } else {
+        mainImageURL = "";
+        $("#countdown_local_main_image").val("");
+      }
+      $("#main-image-select").toggleClass("hidden");
+    });
 
     $("body").on('click', '.main-image-scroll .default-image', function() {
       $mainImagePreview.attr("src", $(this).attr('src'));
@@ -213,12 +201,19 @@ $(document).on('turbolinks:load', function() {
             $('#regForm h1').after(html);
           } else {
             $('#preview-modal .countdown-modal-body').empty();
-            var countdown_html = "<div class='countdown' style='background: url(" + getBackgroundImageURL() + ") no-repeat center center fixed;'>" +
-              "<header class='masthead'><div class='intro-body'><div class='container col-md-12'><div class='text-center'>" + 
-              "<h3 class='brand-heading margin g-mt-40' style=\"color:" +  parameters.get("countdown[title_color]") + ";\">" + parameters.get("countdown[name]") + "</h3>" + 
-              "<img src=\"" + getMainImageURL() + "\"  class='img-fluid rounded-circle margin' alt='Me' style='display:inline' width='250' height='250'>" + 
-              "<div class='flip-counter clock g-mb-40 flip-clock-wrapper'></div>" + 
-             "</div></div></div></header></div>";
+            var countdown_html = "<div class='countdown' style='background: url(" + getBackgroundImageURL() + ") no-repeat center center fixed;'>";
+              if (getMainImageURL().length) {
+                countdown_html += "<header class='masthead' style='padding: 0'><div class='intro-body'><div class='container col-md-12'><div class='text-center'>";
+                countdown_html += "<h3 class='brand-heading margin g-mt-40' style=\"color:" +  parameters.get("countdown[title_color]") + ";\">" + parameters.get("countdown[name]") + "</h3>" +
+                " <img src=\"" + getMainImageURL() + "\"  class='img-fluid rounded-circle margin' alt='Me' style='display:inline' width='250' height='250'>" +
+                " <div class='flip-counter clock g-mb-40 flip-clock-wrapper'></div>";
+              } else {
+                countdown_html += "<header class='masthead'><div class='intro-body'><div class='container col-md-12'><div class='text-center'>";
+
+                countdown_html += "<h3 class='brand-heading g-mt-40 g-mb-50' style=\"color:" +  parameters.get("countdown[title_color]") + ";\">" + parameters.get("countdown[name]") + "</h3>" +
+                " <div class='flip-counter clock g-mb-40 g-mt-100 flip-clock-wrapper'></div>";
+              }
+              countdown_html += " </div></div></div></header></div>";
  
 
             $('#preview-modal .countdown-modal-body').append(countdown_html);

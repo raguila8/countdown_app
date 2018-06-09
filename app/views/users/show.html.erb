@@ -1,80 +1,51 @@
 <% provide(:title, "Progress") %>
-
+<!--
   <h1 class="text-center font-weight-600">Countdowns</h1>
-
+-->
+<div class="countdown-flickity" id="carousel">
   <% @user.countdowns.each do |countdown| %>
-    <div class="countdown countdown-element g-mb-50 container" style='background: url(<%=countdown.background_image.url%>'>
-  <header class="masthead">
-    <div class="intro-body">
-      <div class="container">
-        <div class="text-center">
-          <h3 class="brand-heading margin" style="color: <%=countdown.title_color%>"><%=countdown.name%></h3>
-			    <img src="<%=countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
-          <div class="text-center">
-            <div class="flip-counter clock flip-clock-wrapper" id="clock-<%=countdown.id%>" style=""></div>
+    <div class="countdown" style='background: url(<%=countdown.background_image.url%>'>
+      <header class="masthead">
+        <div class="intro-body">
+          <div class="container">
+            <div class="text-center">
+              <% if countdown.main_image.url %>
+                <h3 class="brand-heading margin" style="color: <%=countdown.title_color%>"><%=countdown.name%></h3>
+			          <img src="<%=countdown.main_image.thumb.url%>"  class="img-responsive img-circle margin" alt="Me" style="display:inline" width="250" height="250">
+                <div class="text-center">
+                  <div class="flip-counter clock flip-clock-wrapper" id="clock-<%=countdown.id%>"></div>
+                </div>
+              <% else %>
+                <h3 class="brand-heading g-mb-50" style="color: <%=countdown.title_color%>"><%=countdown.name%></h3>
+                <div class="text-center g-mt-100">
+                  <div class="flip-counter clock flip-clock-wrapper" id="clock-<%=countdown.id%>"></div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
     </div>
-  </header>
+  <% end %>
+  <% @user.countdowns.each do |countdown| %>
+    <input class="countdown-date-element" id="date-<%=countdown.id%>" type="hidden" value="<%= countdown.date %>">
+
+
+    <style>
+      #clock-<%=countdown.id%> .flip-clock-label { 
+        color: <%= countdown.labels_color %> !important;
+      }
+
+      #clock-<%=countdown.id%> ul li a div div.inn {
+        color: <%= countdown.time_color %> !important;
+        background-color: <%= countdown.clock_background_color %> !important;
+      }
+    </style>
+  <% end %>
 </div>
-
-<input class="countdown-date-element" id="date-<%=countdown.id%>" type="hidden" value="<%= countdown.date %>">
-
 
 <style>
-  #clock-<%=countdown.id%> .flip-clock-label { 
-    color: <%= countdown.labels_color %> !important;
-  }
-
-  #clock-<%=countdown.id%> ul li a div div.inn {
-    color: <%= countdown.time_color %> !important;
-    background-color: <%= countdown.clock_background_color %> !important;
+  .navbar {
+    margin-bottom: 0 !important;
   }
 </style>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="g-mb-40 g-pb-20 container g-mt-40" id="profile-<%=@user.id%>">
-    <div class="row following-scroll"> 
-      <% 30.times do |n| %>
-      <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-        <h3 class=" text-center font-weight-600">Title</h3>
-        <div class="text-center row">
-          <img src="/avatar.jpg" alt="Avatar" width="100" height="100" class="g-mb-5 rounded-circle">
-          <p class="font-weight-200"><%=n%> Followers</p>
-          <button class="btn-sm g-ph-20 g-mb-10 g-pv-5 g-btn-secondary">Follow</button>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
