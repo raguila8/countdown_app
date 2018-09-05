@@ -49,9 +49,14 @@ $(document).on('turbolinks:load', function() {
       pageDots: false
     });
 
-    var mainImageURL = "/main_images/main_image1.jpg";
-    //var mainImageURL = "";
-    var backgroundImageURL = "/background_images/background_image1.jpg";
+    var mainImageURL;
+    var backgroundImageURL;
+
+    var $mainImagePreview = $("#main-image-preview img");
+    var $backgroundImagePreview = $("#background-image-preview img");
+
+    mainImageURL = $mainImagePreview.attr("src");
+    backgroundImageURL = $backgroundImagePreview.attr("src");
 
     var main_image_base64 = "";
     var background_image_base64 = ""; 
@@ -71,11 +76,7 @@ $(document).on('turbolinks:load', function() {
         return background_image_base64;
       }
     }
-
-
-    var $mainImagePreview = $("#main-image-preview img");
-    var $backgroundImagePreview = $("#background-image-preview img");
-
+ 
     $("#main-image-switch").change(function() {
       if ($(this).is(":checked")) {
         mainImageURL = $mainImagePreview.attr("src");
@@ -167,7 +168,7 @@ $(document).on('turbolinks:load', function() {
     $('#preview-modal').modal({ show: false}) 
   
     $('body').on('click', '#previewBtn', function() {
-
+  
       var i = 0;
       var parameters = new Map();
 
@@ -198,7 +199,7 @@ $(document).on('turbolinks:load', function() {
           if (!valid) {
             
             var html = "<div id='error_explanation'><ul><li>" + data.error + "</li></ul></div>";
-            $('#regForm h1').after(html);
+            $('.countdown-form h1').after(html);
           } else {
             $('#preview-modal .countdown-modal-body').empty();
             var countdown_html = "<div class='countdown' style='background: url(" + getBackgroundImageURL() + ") no-repeat center center fixed;'>";

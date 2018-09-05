@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def attributions
   end
+
+  def random
+  end
 end

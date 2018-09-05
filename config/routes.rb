@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/landing', to: 'static_pages#landing', as: :landing
 	get '/about', to: 'static_pages#about', as: :about
 	get '/attributions', to: 'static_pages#attributions', as: :attributions
+  get '/random', to: 'static_pages#random', as: :random
   # End StaticPages Controller
 
 

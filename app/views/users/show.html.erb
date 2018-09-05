@@ -4,7 +4,9 @@
 -->
 <div class="countdown-flickity" id="carousel">
   <% @user.countdowns.each do |countdown| %>
+    <%#= link_to countdown_path(countdown.id) do %>
     <div class="countdown" style='background: url(<%=countdown.background_image.url%>'>
+      <%= link_to countdown_path(countdown.id) do %>
       <header class="masthead">
         <div class="intro-body">
           <div class="container">
@@ -25,7 +27,9 @@
           </div>
         </div>
       </header>
+      <% end %>
     </div>
+    
   <% end %>
   <% @user.countdowns.each do |countdown| %>
     <input class="countdown-date-element" id="date-<%=countdown.id%>" type="hidden" value="<%= countdown.date %>">
